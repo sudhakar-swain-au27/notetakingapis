@@ -12,13 +12,13 @@ This is a RESTful API developed using Node.js and Express.js for a note-taking a
 
 ## Requirements
 
-- Node.js (v14.x or higher)
-- npm (v6.x or higher)
+- Node.js 
+- npm 
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/note-taking-api.git
-   cd note-taking-api
+   git clone https://github.com/sudhakar-swain-au27/notetakingapis.git
+   cd notetakingapis
