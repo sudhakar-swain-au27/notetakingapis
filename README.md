@@ -12,195 +12,229 @@ This is a RESTful API developed using Node.js and Express.js for a note-taking a
 
 ## Requirements
 
-- Node.js 
-- npm 
+- Node.js
+- npm
 
 ## Installation
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/sudhakar-swain-au27/notetakingapis.git
-   cd notetakingapis
-2. Testing API Endpoints
-# #You can use tools like Postman or cURL to test the API endpoints. Below are examples for each endpoint:
+    ```bash
+    git clone https://github.com/sudhakar-swain-au27/notetakingapis.git
+    cd notetakingapis
+    ```
 
-# Create a New Note
-- URL: /notes
-- Method: POST
-- Headers: Content-Type: application/json
-- Body:
-json
-{
-  "title": "First Note",
-  "content": "This is my first note",
-  "tags": ["work", "personal"]
-}
+2. Install dependencies:
 
-# Postman:
-- Open Postman.
-- Select POST method.
-- Enter the URL: http://localhost:3000/notes.
-- Go to the Body tab, select raw, and choose JSON from the dropdown.
-- Enter the JSON body and click Send.
-cURL:
+    ```bash
+    npm install
+    ```
 
-```bash
+3. Start the server:
 
-curl -X POST http://localhost:3000/notes -H "Content-Type: application/json" -d '{"title": "First Note", "content": "This is my first note", "tags": ["work", "personal"]}'
-Retrieve All Notes
-URL: /notes
+    ```bash
+    node server.js
 
-Method: GET
+    ```
 
-Postman:
+    The server will start on `http://localhost:3000`.
 
-Open Postman.
-Select GET method.
-Enter the URL: http://localhost:3000/notes.
-Click Send.
-cURL:
+## Testing API Endpoints
 
-``` bash
-Copy code
-curl -X GET http://localhost:3000/notes
-Retrieve a Single Note by ID
-URL: /notes/:id
+You can use tools like Postman or cURL to test the API endpoints. Below are examples for each endpoint:
 
-Method: GET
+### Create a New Note
 
-Postman:
+- **URL:** `/notes`
+- **Method:** `POST`
+- **Headers:** `Content-Type: application/json`
+- **Body:**
 
-Open Postman.
-Select GET method.
-Enter the URL: http://localhost:3000/notes/{id} (replace {id} with the actual note ID).
-Click Send.
-cURL:
+    ```json
+    {
+      "title": "First Note",
+      "content": "This is my first note",
+      "tags": ["work", "personal"]
+    }
+    ```
 
-``` bash
+- **Postman:**
+  - Open Postman.
+  - Select `POST` method.
+  - Enter the URL: `http://localhost:3000/notes`.
+  - Go to the `Body` tab, select `raw`, and choose `JSON` from the dropdown.
+  - Enter the JSON body and click `Send`.
 
-curl -X GET http://localhost:3000/notes/{id}
-Update a Note by ID
-URL: /notes/:id
+- **cURL:**
 
-Method: PUT
+    ```bash
+    curl -X POST http://localhost:3000/notes -H "Content-Type: application/json" -d '{"title": "First Note", "content": "This is my first note", "tags": ["work", "personal"]}'
+    ```
 
-Headers: Content-Type: application/json
+### Retrieve All Notes
 
-Body:
+- **URL:** `/notes`
+- **Method:** `GET`
 
-json
-{
-  "title": "Updated Note",
-  "content": "This is the updated content",
-  "tags": ["work"]
-}
-Postman:
+- **Postman:**
+  - Open Postman.
+  - Select `GET` method.
+  - Enter the URL: `http://localhost:3000/notes`.
+  - Click `Send`.
 
-Open Postman.
-Select PUT method.
-Enter the URL: http://localhost:3000/notes/{id} (replace {id} with the actual note ID).
-Go to the Body tab, select raw, and choose JSON from the dropdown.
-Enter the JSON body and click Send.
-cURL:
+- **cURL:**
 
-``` bash
-Copy code
-curl -X PUT http://localhost:3000/notes/{id} -H "Content-Type: application/json" -d '{"title": "Updated Note", "content": "This is the updated content", "tags": ["work"]}'
-Delete a Note by ID
-URL: /notes/:id
+    ```bash
+    curl -X GET http://localhost:3000/notes
+    ```
 
-Method: DELETE
+### Retrieve a Single Note by ID
 
-Postman:
+- **URL:** `/notes/:id`
+- **Method:** `GET`
 
-Open Postman.
-Select DELETE method.
-Enter the URL: http://localhost:3000/notes/{id} (replace {id} with the actual note ID).
-Click Send.
-cURL:
+- **Postman:**
+  - Open Postman.
+  - Select `GET` method.
+  - Enter the URL: `http://localhost:3000/notes/{id}` (replace `{id}` with the actual note ID).
+  - Click `Send`.
 
-``` bash
+- **cURL:**
 
-curl -X DELETE http://localhost:3000/notes/{id}
-3. Tag Management
-Add Tags to a Note
-URL: /notes/:id/tags
+    ```bash
+    curl -X GET http://localhost:3000/notes/{id}
+    ```
 
-Method: PUT
+### Update a Note by ID
 
-Headers: Content-Type: application/json
+- **URL:** `/notes/:id`
+- **Method:** `PUT`
+- **Headers:** `Content-Type: application/json`
+- **Body:**
 
-Body:
+    ```json
+    {
+      "title": "Updated Note",
+      "content": "This is the updated content",
+      "tags": ["work"]
+    }
+    ```
 
-json
-{
-  "tags": ["urgent", "important"]
-}
-Postman:
+- **Postman:**
+  - Open Postman.
+  - Select `PUT` method.
+  - Enter the URL: `http://localhost:3000/notes/{id}` (replace `{id}` with the actual note ID).
+  - Go to the `Body` tab, select `raw`, and choose `JSON` from the dropdown.
+  - Enter the JSON body and click `Send`.
 
-Open Postman.
-Select PUT method.
-Enter the URL: http://localhost:3000/notes/{id}/tags (replace {id} with the actual note ID).
-Go to the Body tab, select raw, and choose JSON from the dropdown.
-Enter the JSON body and click Send.
-cURL:
+- **cURL:**
 
-``` bash
-Copy code
-curl -X PUT http://localhost:3000/notes/{id}/tags -H "Content-Type: application/json" -d '{"tags": ["urgent", "important"]}'
-Remove Tags from a Note
-URL: /notes/:id/tags
+    ```bash
+    curl -X PUT http://localhost:3000/notes/{id} -H "Content-Type: application/json" -d '{"title": "Updated Note", "content": "This is the updated content", "tags": ["work"]}'
+    ```
 
-Method: DELETE
+### Delete a Note by ID
 
-Headers: Content-Type: application/json
+- **URL:** `/notes/:id`
+- **Method:** `DELETE`
 
-Body:
+- **Postman:**
+  - Open Postman.
+  - Select `DELETE` method.
+  - Enter the URL: `http://localhost:3000/notes/{id}` (replace `{id}` with the actual note ID).
+  - Click `Send`.
 
-json
-{
-  "tags": ["personal"]
-}
-Postman:
+- **cURL:**
 
-Open Postman.
-Select DELETE method.
-Enter the URL: http://localhost:3000/notes/{id}/tags (replace {id} with the actual note ID).
-Go to the Body tab, select raw, and choose JSON from the dropdown.
-Enter the JSON body and click Send.
-cURL:
+    ```bash
+    curl -X DELETE http://localhost:3000/notes/{id}
+    ```
 
- ``` bash
-Copy code
-curl -X DELETE http://localhost:3000/notes/{id}/tags -H "Content-Type: application/json" -d '{"tags": ["personal"]}'
-4. Querying
-Retrieve Notes Based on a Logical Tag Query
-URL: /notes/query
-Method: GET
-Query Parameters:
-tags (string) - Comma-separated list of tags with optional logical operators (AND, OR, NOT)
-Example URL:
+## Tag Management
 
-``` bash
+### Add Tags to a Note
 
-/notes/query?tags=work,NOT personal
-Postman:
+- **URL:** `/notes/:id/tags`
+- **Method:** `PUT`
+- **Headers:** `Content-Type: application/json`
+- **Body:**
 
-Open Postman.
-Select GET method.
-Enter the URL: http://localhost:3000/notes/query?tags=work,NOT personal.
-Click Send.
-cURL:
+    ```json
+    {
+      "tags": ["urgent", "important"]
+    }
+    ```
 
-``` bash
+- **Postman:**
+  - Open Postman.
+  - Select `PUT` method.
+  - Enter the URL: `http://localhost:3000/notes/{id}/tags` (replace `{id}` with the actual note ID).
+  - Go to the `Body` tab, select `raw`, and choose `JSON` from the dropdown.
+  - Enter the JSON body and click `Send`.
 
-curl -X GET "http://localhost:3000/notes/query?tags=work,NOT personal"
-Data Structure
+- **cURL:**
+
+    ```bash
+    curl -X PUT http://localhost:3000/notes/{id}/tags -H "Content-Type: application/json" -d '{"tags": ["urgent", "important"]}'
+    ```
+
+### Remove Tags from a Note
+
+- **URL:** `/notes/:id/tags`
+- **Method:** `DELETE`
+- **Headers:** `Content-Type: application/json`
+- **Body:**
+
+    ```json
+    {
+      "tags": ["personal"]
+    }
+    ```
+
+- **Postman:**
+  - Open Postman.
+  - Select `DELETE` method.
+  - Enter the URL: `http://localhost:3000/notes/{id}/tags` (replace `{id}` with the actual note ID).
+  - Go to the `Body` tab, select `raw`, and choose `JSON` from the dropdown.
+  - Enter the JSON body and click `Send`.
+
+- **cURL:**
+
+    ```bash
+    curl -X DELETE http://localhost:3000/notes/{id}/tags -H "Content-Type: application/json" -d '{"tags": ["personal"]}'
+    ```
+
+## Querying
+
+### Retrieve Notes Based on a Logical Tag Query
+
+- **URL:** `/notes/query`
+- **Method:** `GET`
+- **Query Parameters:**
+  - `tags` (string) - Comma-separated list of tags with optional logical operators (`AND`, `OR`, `NOT`)
+- **Example URL:**
+
+    ```bash
+    /notes/query?tags=work,NOT personal
+    ```
+
+- **Postman:**
+  - Open Postman.
+  - Select `GET` method.
+  - Enter the URL: `http://localhost:3000/notes/query?tags=work,NOT personal`.
+  - Click `Send`.
+
+- **cURL:**
+
+    ```bash
+    curl -X GET "http://localhost:3000/notes/query?tags=work,NOT personal"
+    ```
+
+## Data Structure
+
 Each note should have the following structure:
 
-json
-
+```json
 {
   "id": "unique-note-id",
   "title": "Note Title",
